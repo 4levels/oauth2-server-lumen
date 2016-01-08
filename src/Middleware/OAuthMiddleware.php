@@ -7,10 +7,10 @@ use LucaDegasperi\OAuth2Server\Filters\OAuthFilter;
 
 class OAuthMiddleware extends OAuthFilter {
 
-    public function handle($request, Closure $next)
+    public function handle($request, Closure $next, $scopes = null)
     {
         // Will throw exception on failure
-        parent::filter();
+        parent::filter($request, $next, $scopes);
 
         return $next($request);
     }
